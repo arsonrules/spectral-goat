@@ -1,5 +1,7 @@
 trigger:
 - main
+pool:
+  vmImage: 'ubuntu-latest'
 variables:
   SPECTRAL_DSN: $(SPECTRAL_DSN)
 steps:
