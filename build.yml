@@ -4,9 +4,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  SPECTRAL_DSN: $(SPECTRAL_DSN)  # Ensure this is set as a secret or pipeline variable
-
 jobs:
   - job:
     displayName: 'Spectral Job'
@@ -14,5 +11,5 @@ jobs:
       - script: curl -L 'https://spectral-eu.checkpoint.com/latest/x/sh?dsn=$(SPECTRAL_DSN)' | sh
         displayName: 'Install Spectral'
 
-      - script: $HOME/.spectral/spectral scan --ok --dsn $(SPECTRAL_DSN) --engines secrets,iac,oss --include-tags base,audit3,iac
+      - script: $HOME/.spectral/spectral scan --ok --dsn $(SPECTRAL_DSN)
         displayName: 'Spectral Scan'
